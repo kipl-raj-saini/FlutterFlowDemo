@@ -408,31 +408,34 @@ class _SignupScreenWidgetState extends State<SignupScreenWidget> {
                           endIndent: 20,
                           color: Color(0xFFDBE2E7),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              Navigator.pop(context);
-                            },
-                            text: 'Login',
-                            options: FFButtonOptions(
-                              width: 150,
-                              height: 35,
-                              color: Colors.white,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF4B39EF),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                              elevation: 0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                Navigator.pop(context);
+                              },
+                              text: 'Login',
+                              options: FFButtonOptions(
+                                width: 150,
+                                height: 35,
+                                color: Colors.white,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF4B39EF),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                elevation: 0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: 12,
                               ),
-                              borderRadius: 12,
                             ),
                           ),
                         ),
