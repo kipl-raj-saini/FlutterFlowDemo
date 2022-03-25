@@ -1,3 +1,4 @@
+import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -264,8 +265,23 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         children: [
                           Expanded(
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                final user = await signInWithEmail(
+                                  context,
+                                  emailController.text,
+                                  passwordController.text,
+                                );
+                                if (user == null) {
+                                  return;
+                                }
+
+                                await Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreenWidget(),
+                                  ),
+                                  (r) => false,
+                                );
                               },
                               text: 'Sign In',
                               options: FFButtonOptions(
