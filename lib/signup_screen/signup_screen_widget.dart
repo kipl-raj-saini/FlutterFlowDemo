@@ -286,25 +286,42 @@ class _SignupScreenWidgetState extends State<SignupScreenWidget> {
                                   obscureText: !confirmPasswordVisibility,
                                   decoration: InputDecoration(
                                     labelText: 'Enter confirm password',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF95A1AC),
+                                          fontWeight: FontWeight.normal,
+                                        ),
                                     hintText: 'Confirm Password',
-                                    enabledBorder: UnderlineInputBorder(
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .bodyText1
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0x00000000),
+                                        color: Color(0xFFDBE2E7),
                                         width: 1,
                                       ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(8),
+                                        bottomRight: Radius.circular(0),
+                                        topLeft: Radius.circular(8),
+                                        topRight: Radius.circular(0),
                                       ),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
+                                    focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0x00000000),
+                                        color: Color(0xFFDBE2E7),
                                         width: 1,
                                       ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(8),
+                                        bottomRight: Radius.circular(0),
+                                        topLeft: Radius.circular(8),
+                                        topRight: Radius.circular(0),
                                       ),
                                     ),
                                     contentPadding:
@@ -324,7 +341,12 @@ class _SignupScreenWidgetState extends State<SignupScreenWidget> {
                                       ),
                                     ),
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                 ),
                               ),
                             ],
