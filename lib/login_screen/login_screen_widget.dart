@@ -34,7 +34,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       backgroundColor: Color(0xFF262D34),
       body: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.95,
+        height: MediaQuery.of(context).size.height * 1,
         decoration: BoxDecoration(
           color: Color(0xFF262D34),
           image: DecorationImage(
@@ -292,53 +292,57 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          AutoSizeText(
-                            'Don\'t have an account?',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      color: Color(0xFF161718),
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignupScreenWidget(),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 10),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            AutoSizeText(
+                              'Don\'t have an account?',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF161718),
+                                    fontWeight: FontWeight.normal,
                                   ),
-                                );
-                              },
-                              text: 'Signup',
-                              options: FFButtonOptions(
-                                width: 77,
-                                height: 40,
-                                color: Color(0xFFFAFAFF),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 0,
-                                ),
-                                borderRadius: 0,
-                              ),
-                              showLoadingIndicator: false,
                             ),
-                          ),
-                        ],
+                            Align(
+                              alignment: AlignmentDirectional(0, 0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          SignupScreenWidget(),
+                                    ),
+                                  );
+                                },
+                                text: 'Signup',
+                                options: FFButtonOptions(
+                                  width: 77,
+                                  height: 40,
+                                  color: Color(0xFFFAFAFF),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 0,
+                                  ),
+                                  borderRadius: 0,
+                                ),
+                                showLoadingIndicator: false,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
