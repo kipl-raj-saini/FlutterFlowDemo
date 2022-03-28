@@ -384,10 +384,7 @@ class _SignupScreenWidgetState extends State<SignupScreenWidget> {
 
                                   final usersCreateData = createUsersRecordData(
                                     email: emailAddressController.text,
-                                    photoUrl: '',
-                                    uid: '',
-                                    phoneNumber: '',
-                                    displayName: functions.getDisplayName(),
+                                    name: functions.getDisplayName(),
                                   );
                                   await UsersRecord.collection
                                       .doc(user.uid)

@@ -1,11 +1,11 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
-import '../flutter_flow/flutter_flow_place_picker.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/place.dart';
 import '../flutter_flow/upload_media.dart';
-import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,14 +18,15 @@ class CreatePostScreenWidget extends StatefulWidget {
 
 class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
   String uploadedFileUrl = '';
-  TextEditingController textController;
-  var placePickerValue = FFPlace();
+  TextEditingController postTitleController;
+  TextEditingController postDescriptionController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
+    postDescriptionController = TextEditingController();
+    postTitleController = TextEditingController();
   }
 
   @override
@@ -125,16 +126,64 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
                         ),
                       ),
                       Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                controller: postTitleController,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  hintText: 'Title',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .bodyText2
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF8B9782),
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFDBE2E7),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFFDBE2E7),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          20, 12, 20, 12),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF090F13),
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: textController,
+                                controller: postDescriptionController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Comment....',
+                                  hintText: 'Description....',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyText2
                                       .override(
@@ -183,41 +232,17 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
-            child: FlutterFlowPlacePicker(
-              iOSGoogleMapsApiKey: '',
-              androidGoogleMapsApiKey: '',
-              webGoogleMapsApiKey: '',
-              onSelect: (place) => setState(() => placePickerValue = place),
-              defaultText: 'Tag Location',
-              icon: Icon(
-                Icons.place,
-                color: Color(0xFF95A1AC),
-                size: 16,
-              ),
-              buttonOptions: FFButtonOptions(
-                width: double.infinity,
-                height: 50,
-                color: Colors.white,
-                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0xFF95A1AC),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                borderSide: BorderSide(
-                  color: Color(0xFFDBE2E7),
-                  width: 2,
-                ),
-                borderRadius: 8,
-              ),
-            ),
-          ),
-          Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
             child: FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
+              onPressed: () async {
+                final postsCreateData = createPostsRecordData(
+                  postId: '',
+                  postName: postTitleController.text,
+                  postImage: uploadedFileUrl,
+                  postDescription: postDescriptionController.text,
+                );
+                await PostsRecord.collection.doc().set(postsCreateData);
+                Navigator.pop(context);
               },
               text: 'Create Post',
               options: FFButtonOptions(

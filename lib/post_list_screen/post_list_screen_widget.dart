@@ -1,3 +1,4 @@
+import '../create_post_screen/create_post_screen_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -41,17 +42,27 @@ class _PostListScreenWidgetState extends State<PostListScreenWidget> {
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
-            child: Icon(
-              Icons.add_circle_sharp,
-              color: Color(0xFFFAFAFF),
-              size: 24,
+            child: InkWell(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreatePostScreenWidget(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.add_circle_sharp,
+                color: Color(0xFFFAFAFF),
+                size: 24,
+              ),
             ),
           ),
         ],
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Color(0xFF262D34),
+      backgroundColor: Color(0xFF0D0000),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -73,8 +84,7 @@ class _PostListScreenWidgetState extends State<PostListScreenWidget> {
                       controller: searchPostController,
                       obscureText: false,
                       decoration: InputDecoration(
-                        labelText: 'Search for classes...',
-                        hintText: 'Search by name, location etc...',
+                        labelText: 'Search for posts',
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Color(0xFF262D34),
