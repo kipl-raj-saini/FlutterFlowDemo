@@ -2,7 +2,7 @@ import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../post_list/post_list_widget.dart';
+import '../post_list_screen/post_list_screen_widget.dart';
 import '../signup_screen/signup_screen_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -279,7 +279,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => PostListWidget(),
+                                    builder: (context) =>
+                                        PostListScreenWidget(),
                                   ),
                                 );
                               },
