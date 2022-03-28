@@ -122,6 +122,12 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
                               ],
                               borderRadius: BorderRadius.circular(8),
                             ),
+                            child: Image.network(
+                              uploadedFileUrl,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -236,10 +242,9 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
             child: FFButtonWidget(
               onPressed: () async {
                 final postsCreateData = createPostsRecordData(
-                  postId: '',
                   postName: postTitleController.text,
-                  postImage: uploadedFileUrl,
                   postDescription: postDescriptionController.text,
+                  postImage: uploadedFileUrl,
                 );
                 await PostsRecord.collection.doc().set(postsCreateData);
                 Navigator.pop(context);
