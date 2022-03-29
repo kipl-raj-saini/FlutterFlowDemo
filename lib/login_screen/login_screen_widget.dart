@@ -288,7 +288,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                               options: FFButtonOptions(
                                 width: 130,
                                 height: 50,
-                                color: Color(0xFF4B39EF),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryColor,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
@@ -347,7 +348,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .secondaryColor,
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,

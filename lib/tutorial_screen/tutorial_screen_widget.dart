@@ -320,11 +320,12 @@ class _TutorialScreenWidgetState extends State<TutorialScreenWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      await Navigator.push(
+                      await Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
                           builder: (context) => LoginScreenWidget(),
                         ),
+                        (r) => false,
                       );
                     },
                     text: 'Continue',

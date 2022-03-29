@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login_screen/login_screen_widget.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -384,25 +383,28 @@ class _SignupScreenWidgetState extends State<SignupScreenWidget> {
 
                                   final usersCreateData = createUsersRecordData(
                                     email: emailAddressController.text,
-                                    name: functions.getDisplayName(),
+                                    name: ' ',
+                                    createdTime: getCurrentTimestamp,
+                                    photoUrl: ' ',
+                                    bio: ' ',
                                   );
                                   await UsersRecord.collection
                                       .doc(user.uid)
                                       .update(usersCreateData);
 
-                                  await Navigator.pushAndRemoveUntil(
+                                  await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => LoginScreenWidget(),
                                     ),
-                                    (r) => false,
                                   );
                                 },
                                 text: 'Create Account',
                                 options: FFButtonOptions(
                                   width: 200,
                                   height: 50,
-                                  color: Color(0xFF4B39EF),
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
@@ -442,7 +444,8 @@ class _SignupScreenWidgetState extends State<SignupScreenWidget> {
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF4B39EF),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                   ),

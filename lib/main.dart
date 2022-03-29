@@ -8,7 +8,7 @@ import 'auth/auth_util.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/internationalization.dart';
-import 'package:flutter_flow_demo/tutorial_screen/tutorial_screen_widget.dart';
+import 'package:flutter_flow_demo/launch_screen/launch_screen_widget.dart';
 import 'package:flutter_flow_demo/login_screen/login_screen_widget.dart';
 
 void main() async {
@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser.loggedIn
               ? LoginScreenWidget()
-              : TutorialScreenWidget(),
+              : LaunchScreenWidget(),
     );
   }
 }

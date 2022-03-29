@@ -34,20 +34,20 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryColor,
         automaticallyImplyLeading: true,
         title: Text(
           'Create Post',
+          textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Lexend Deca',
                 color: Color(0xFFFAFAFF),
-                fontSize: 22,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
         ),
         actions: [],
-        centerTitle: true,
-        elevation: 0,
+        centerTitle: false,
       ),
       backgroundColor: Colors.white,
       body: Column(
@@ -245,6 +245,7 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
                   postName: postTitleController.text,
                   postDescription: postDescriptionController.text,
                   postImage: uploadedFileUrl,
+                  createdTime: getCurrentTimestamp,
                 );
                 await PostsRecord.collection.doc().set(postsCreateData);
                 Navigator.pop(context);
@@ -253,7 +254,7 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
               options: FFButtonOptions(
                 width: 270,
                 height: 60,
-                color: Color(0xFF4B39EF),
+                color: FlutterFlowTheme.of(context).secondaryColor,
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Lexend Deca',
                       color: Colors.white,

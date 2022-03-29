@@ -18,12 +18,19 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
   String get postName;
 
   @nullable
+  @BuiltValueField(wireName: 'post_description')
+  String get postDescription;
+
+  @nullable
+  @BuiltValueField(wireName: 'created_time')
+  DateTime get createdTime;
+
+  @nullable
   @BuiltValueField(wireName: 'post_image')
   String get postImage;
 
   @nullable
-  @BuiltValueField(wireName: 'post_description')
-  String get postDescription;
+  DocumentReference get user;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -32,8 +39,8 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
   static void _initializeBuilder(PostsRecordBuilder builder) => builder
     ..postId = ''
     ..postName = ''
-    ..postImage = ''
-    ..postDescription = '';
+    ..postDescription = ''
+    ..postImage = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('posts');
@@ -59,13 +66,17 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
 Map<String, dynamic> createPostsRecordData({
   String postId,
   String postName,
-  String postImage,
   String postDescription,
+  DateTime createdTime,
+  String postImage,
+  DocumentReference user,
 }) =>
     serializers.toFirestore(
         PostsRecord.serializer,
         PostsRecord((p) => p
           ..postId = postId
           ..postName = postName
+          ..postDescription = postDescription
+          ..createdTime = createdTime
           ..postImage = postImage
-          ..postDescription = postDescription));
+          ..user = user));
