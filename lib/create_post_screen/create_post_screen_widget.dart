@@ -104,7 +104,7 @@ class _CreatePostScreenWidgetState extends State<CreatePostScreenWidget> {
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.96,
-                            height: 350,
+                            height: MediaQuery.of(context).size.height * 0.35,
                             decoration: BoxDecoration(
                               color: Color(0xFFF1F5F8),
                               image: DecorationImage(

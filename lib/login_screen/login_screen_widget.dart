@@ -70,7 +70,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 320,
+                height: 330,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -88,31 +88,6 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Color(0xFFDBE2E7),
-                                ),
-                              ),
-                              child: InkWell(
-                                onTap: () async {
-                                  Navigator.pop(context);
-                                },
-                                child: Icon(
-                                  Icons.arrow_back_rounded,
-                                  color: Color(0xFF090F13),
-                                  size: 24,
-                                ),
-                              ),
-                            ),
-                          ),
                           Expanded(
                             child: Text(
                               'Email Sign In',
@@ -312,9 +287,10 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 10),
+                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 30),
                         child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             AutoSizeText(
                               'Don\'t have an account?',
